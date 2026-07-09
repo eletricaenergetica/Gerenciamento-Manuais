@@ -63,7 +63,7 @@ def publicar_git():
 
     executar(["git", "commit", "-m", mensagem], repo)
 
-    executar(["git", "push", "origin", "main"], repo)
+    executar(["git", "push", "origin", "master"], repo)
 
     return "Publicação realizada com sucesso!"
 
