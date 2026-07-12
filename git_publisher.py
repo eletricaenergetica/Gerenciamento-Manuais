@@ -10,7 +10,9 @@ logging.basicConfig(
 
 
 def executar(comando, pasta):
-    """Executa um comando Git."""
+    """
+    Executa um comando Git e retorna a saída.
+    """
 
     resultado = subprocess.run(
         comando,
@@ -20,14 +22,18 @@ def executar(comando, pasta):
     )
 
     if resultado.returncode != 0:
-        raise RuntimeError(resultado.stderr.strip())
+        raise RuntimeError(
+            f"Erro ao executar:\n"
+            f"{' '.join(comando)}\n\n"
+            f"{resultado.stderr.strip()}"
+        )
 
     return resultado.stdout.strip()
 
 
 def localizar_repositorio():
     """
-    Localiza automaticamente a pasta que contém o .git
+    Localiza automaticamente a pasta que contém o diretório .git.
     """
 
     pasta = Path(__file__).resolve().parent
@@ -43,15 +49,21 @@ def localizar_repositorio():
 
 
 def publicar_git():
+    """
+    Publica automaticamente as alterações no GitHub.
+    """
 
     repo = localizar_repositorio()
 
     logging.info(f"Repositório encontrado em:\n{repo}")
 
-    # Adiciona arquivos
+    # Verifica se o Git está disponível
+    executar(["git", "--version"], repo)
+
+    # Adiciona todos os arquivos
     executar(["git", "add", "."], repo)
 
-    # Verifica se existe alteração
+    # Verifica se existe algo para publicar
     status = executar(["git", "status", "--porcelain"], repo)
 
     if not status:
@@ -61,9 +73,11 @@ def publicar_git():
         "Atualização automática %d/%m/%Y %H:%M"
     )
 
+    # Commit
     executar(["git", "commit", "-m", mensagem], repo)
 
-    executar(["git", "push", "origin", "master"], repo)
+    # Push para a branch configurada (master ou main)
+    executar(["git", "push"], repo)
 
     return "Publicação realizada com sucesso!"
 
@@ -76,4 +90,4 @@ if __name__ == "__main__":
 
     except Exception as erro:
 
-        print("ERRO:", erro)
+        logging.error(erro)
