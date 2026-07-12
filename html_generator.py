@@ -3,14 +3,17 @@ import html
 
 
 def gerar_html(projeto, lista_pdfs, pasta_saida="site"):
+    """
+    Gera o arquivo index.html contendo a lista de manuais do projeto.
+    """
 
-    # segurança: evita erro se não tiver PDFs
     if not lista_pdfs:
         raise Exception("Nenhum manual encontrado para gerar o HTML.")
 
     os.makedirs(pasta_saida, exist_ok=True)
 
-    caminho_html = os.path.join(pasta_saida, f"{projeto}.html")
+    # O GitHub Pages procura automaticamente por index.html
+    caminho_html = os.path.join(pasta_saida, "index.html")
 
     lista_pdfs = sorted(lista_pdfs, key=lambda x: x[1].lower())
 
@@ -18,47 +21,56 @@ def gerar_html(projeto, lista_pdfs, pasta_saida="site"):
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{html.escape(projeto)}</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body {{
-            font-family: Arial, Helvetica, sans-serif;
-            background:#1e1e1e;
-            color:white;
-            text-align:center;
-            margin:0;
-            padding:30px;
-        }}
+<title>{html.escape(projeto)}</title>
 
-        h1 {{
-            color:#00BFFF;
-        }}
+<style>
 
-        .card{{
-            background:#2d2d2d;
-            width:340px;
-            margin:15px auto;
-            padding:18px;
-            border-radius:12px;
-            box-shadow:0 0 8px rgba(0,0,0,.3);
-        }}
+body {{
+    font-family: Arial, Helvetica, sans-serif;
+    background:#1e1e1e;
+    color:white;
+    margin:0;
+    padding:30px;
+    text-align:center;
+}}
 
-        a{{
-            display:block;
-            margin-top:15px;
-            padding:10px;
-            background:#0d6efd;
-            color:white;
-            text-decoration:none;
-            border-radius:8px;
-        }}
+h1 {{
+    color:#00BFFF;
+}}
 
-        a:hover{{
-            background:#0b5ed7;
-        }}
-    </style>
+.card {{
+    width:340px;
+    margin:15px auto;
+    padding:18px;
+    background:#2d2d2d;
+    border-radius:12px;
+    box-shadow:0 0 8px rgba(0,0,0,.3);
+}}
+
+a {{
+    display:block;
+    margin-top:15px;
+    padding:10px;
+    background:#0d6efd;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+}}
+
+a:hover {{
+    background:#0b5ed7;
+}}
+
+footer {{
+    margin-top:40px;
+    color:#999;
+    font-size:13px;
+}}
+
+</style>
 
 </head>
 
@@ -74,27 +86,32 @@ def gerar_html(projeto, lista_pdfs, pasta_saida="site"):
         nome = html.escape(pdf[1])
         arquivo_pdf = os.path.basename(pdf[2])
 
-        # caminho compatível com GitHub Pages
         link_pdf = f"pdfs/{projeto}/{arquivo_pdf}"
 
         html_content += f"""
 <div class="card">
 
-<h3>📄 {nome}</h3>
+<h3>{nome}</h3>
 
 <a href="{link_pdf}" target="_blank">
-Abrir Manual
+📖 Abrir Manual
 </a>
 
 </div>
 """
 
     html_content += """
+<footer>
+
+Gerado automaticamente pelo Sistema de Gerenciamento de Manuais.
+
+</footer>
+
 </body>
 </html>
 """
 
-    with open(caminho_html, "w", encoding="utf-8") as f:
-        f.write(html_content)
+    with open(caminho_html, "w", encoding="utf-8") as arquivo:
+        arquivo.write(html_content)
 
     return caminho_html

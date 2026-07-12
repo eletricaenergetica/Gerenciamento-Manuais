@@ -152,11 +152,7 @@ def gerar_site(projeto):
 
     # Link público GitHub Pages
 
-    link = (
-        f"{GITHUB_BASE_URL}/"
-        f"{projeto}.html"
-    )
-
+link = GITHUB_BASE_URL
 
     return html_path, link
 
