@@ -1,0 +1,362 @@
+[
+    {
+        "label": "ttkbootstrap",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "ttkbootstrap",
+        "description": "ttkbootstrap",
+        "detail": "ttkbootstrap",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "ttkbootstrap.constants",
+        "description": "ttkbootstrap.constants",
+        "isExtraImport": true,
+        "detail": "ttkbootstrap.constants",
+        "documentation": {}
+    },
+    {
+        "label": "filedialog",
+        "importPath": "tkinter",
+        "description": "tkinter",
+        "isExtraImport": true,
+        "detail": "tkinter",
+        "documentation": {}
+    },
+    {
+        "label": "messagebox",
+        "importPath": "tkinter",
+        "description": "tkinter",
+        "isExtraImport": true,
+        "detail": "tkinter",
+        "documentation": {}
+    },
+    {
+        "label": "shutil",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "shutil",
+        "description": "shutil",
+        "detail": "shutil",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "database",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "database",
+        "description": "database",
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "qrcode_generator",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "qrcode_generator",
+        "description": "qrcode_generator",
+        "detail": "qrcode_generator",
+        "documentation": {}
+    },
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "html_generator",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "html_generator",
+        "description": "html_generator",
+        "detail": "html_generator",
+        "documentation": {}
+    },
+    {
+        "label": "sqlite3",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sqlite3",
+        "description": "sqlite3",
+        "detail": "sqlite3",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Tuple",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "subprocess",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "subprocess",
+        "description": "subprocess",
+        "detail": "subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "html",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "html",
+        "description": "html",
+        "detail": "html",
+        "documentation": {}
+    },
+    {
+        "label": "urllib.parse",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "urllib.parse",
+        "description": "urllib.parse",
+        "detail": "urllib.parse",
+        "documentation": {}
+    },
+    {
+        "label": "qrcode",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "qrcode",
+        "description": "qrcode",
+        "detail": "qrcode",
+        "documentation": {}
+    },
+    {
+        "label": "App",
+        "kind": 6,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "class App:\n    def __init__(self):\n        self.janela = tb.Window(themename=\"darkly\")\n        self.janela.title(\"Gerenciamento de Manuais Industriais\")\n        self.janela.geometry(\"850x500\")\n        self.projeto = tb.StringVar()\n        self.criar_interface()\n        # Carrega com segurança o último projeto aberto usando o arquivo de config local\n        ultimo = _obter_ultimo_projeto()\n        self.projeto.set(ultimo)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "CONFIG_FILE",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "CONFIG_FILE = \"config.txt\"\ndef _obter_ultimo_projeto() -> str:\n    \"\"\"Recupera o nome do último projeto aberto salvo localmente.\"\"\"\n    if os.path.exists(CONFIG_FILE):\n        try:\n            with open(CONFIG_FILE, \"r\", encoding=\"utf-8\") as f:\n                return f.read().strip()\n        except:\n            pass\n    return \"\"",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "gerar_site",
+        "kind": 2,
+        "importPath": "build_site",
+        "description": "build_site",
+        "peekOfCode": "def gerar_site(projeto):\n    dados = db.listar_manuais(projeto) or []\n    if not dados:\n        raise RuntimeError(\n            \"Nenhum manual encontrado para este projeto.\"\n        )\n    site_dir = \".\"\n    projeto_pdf_dir = os.path.join(\n        \"pdfs\",\n        projeto",
+        "detail": "build_site",
+        "documentation": {}
+    },
+    {
+        "label": "GITHUB_BASE_URL",
+        "kind": 5,
+        "importPath": "build_site",
+        "description": "build_site",
+        "peekOfCode": "GITHUB_BASE_URL = \"https://eletricaenergetica.github.io/Gerenciamento-Manuais\"\nlogging.basicConfig(\n    level=logging.INFO,\n    format=\"%(levelname)s: %(message)s\"\n)\ndef _extrair_origem(manual):\n    \"\"\"\n    Extrai o caminho do PDF do registro do banco.\n    \"\"\"\n    if isinstance(manual, dict):",
+        "detail": "build_site",
+        "documentation": {}
+    },
+    {
+        "label": "conectar",
+        "kind": 2,
+        "importPath": "database",
+        "description": "database",
+        "peekOfCode": "def conectar() -> sqlite3.Connection:\n    \"\"\"Conecta ao banco no caminho DB_PATH.\"\"\"\n    logger.debug(\"Conectando ao DB em: %s\", DB_PATH)\n    return sqlite3.connect(DB_PATH)\ndef criar_tabela() -> None:\n    conn = conectar()\n    try:\n        with conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"",
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "criar_tabela",
+        "kind": 2,
+        "importPath": "database",
+        "description": "database",
+        "peekOfCode": "def criar_tabela() -> None:\n    conn = conectar()\n    try:\n        with conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n            CREATE TABLE IF NOT EXISTS manuais (\n                id INTEGER PRIMARY KEY AUTOINCREMENT,\n                projeto TEXT,\n                nome TEXT,",
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "inserir_manual",
+        "kind": 2,
+        "importPath": "database",
+        "description": "database",
+        "peekOfCode": "def inserir_manual(projeto: Optional[str], nome: str, caminho: str) -> None:\n    projeto_sanitizado = projeto.strip() if projeto else \"\"\n    conn = conectar()\n    try:\n        with conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n            INSERT INTO manuais (projeto, nome, caminho)\n            VALUES (?, ?, ?)\n            \"\"\", (projeto_sanitizado, nome, caminho))",
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "listar_manuais",
+        "kind": 2,
+        "importPath": "database",
+        "description": "database",
+        "peekOfCode": "def listar_manuais(projeto: Optional[str] = None) -> List[Tuple]:\n    \"\"\"\n    Retorna lista de tuplas (id, nome, caminho).\n    Se projeto for fornecido, faz comparação case-insensitive.\n    \"\"\"\n    logger.info(\"Listando manuais para projeto: %r (DB: %s)\", projeto, DB_PATH)\n    conn = conectar()\n    try:\n        cursor = conn.cursor()\n        if projeto:",
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "deletar_manual",
+        "kind": 2,
+        "importPath": "database",
+        "description": "database",
+        "peekOfCode": "def deletar_manual(id_manual: int) -> None:\n    conn = conectar()\n    try:\n        with conn:\n            cursor = conn.cursor()\n            cursor.execute(\"DELETE FROM manuais WHERE id = ?\", (id_manual,))\n    finally:\n        conn.close()\n# Funções extras úteis para depurar/inspecionar\ndef listar_projetos() -> List[str]:",
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "listar_projetos",
+        "kind": 2,
+        "importPath": "database",
+        "description": "database",
+        "peekOfCode": "def listar_projetos() -> List[str]:\n    \"\"\"Retorna a lista de projetos distintos registrados no DB.\"\"\"\n    conn = conectar()\n    try:\n        cursor = conn.cursor()\n        cursor.execute(\"SELECT DISTINCT projeto FROM manuais\")\n        rows = cursor.fetchall()\n        return [r[0] for r in rows if r and r[0] is not None]\n    finally:\n        conn.close()",
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "buscar_projetos_like",
+        "kind": 2,
+        "importPath": "database",
+        "description": "database",
+        "peekOfCode": "def buscar_projetos_like(padrao: str) -> List[str]:\n    \"\"\"Procura projetos que contenham o padrão (case-insensitive).\"\"\"\n    conn = conectar()\n    try:\n        cursor = conn.cursor()\n        cursor.execute(\"SELECT DISTINCT projeto FROM manuais WHERE projeto LIKE ?\", (f\"%{padrao}%\",))\n        rows = cursor.fetchall()\n        return [r[0] for r in rows if r and r[0] is not None]\n    finally:\n        conn.close()",
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "database",
+        "description": "database",
+        "peekOfCode": "logger = logging.getLogger(__name__)\n# Configure logging básico apenas se não houver configuração externa\nif not logging.getLogger().handlers:\n    logging.basicConfig(level=logging.INFO, format=\"%(levelname)s: %(message)s\")\n# Nome do arquivo DB — caminho absoluto relativo a este módulo para evitar problemas de cwd\nDB_NAME = \"manuais.db\"\nDB_PATH = str(Path(__file__).parent.resolve() / DB_NAME)\ndef conectar() -> sqlite3.Connection:\n    \"\"\"Conecta ao banco no caminho DB_PATH.\"\"\"\n    logger.debug(\"Conectando ao DB em: %s\", DB_PATH)",
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "DB_NAME",
+        "kind": 5,
+        "importPath": "database",
+        "description": "database",
+        "peekOfCode": "DB_NAME = \"manuais.db\"\nDB_PATH = str(Path(__file__).parent.resolve() / DB_NAME)\ndef conectar() -> sqlite3.Connection:\n    \"\"\"Conecta ao banco no caminho DB_PATH.\"\"\"\n    logger.debug(\"Conectando ao DB em: %s\", DB_PATH)\n    return sqlite3.connect(DB_PATH)\ndef criar_tabela() -> None:\n    conn = conectar()\n    try:\n        with conn:",
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "DB_PATH",
+        "kind": 5,
+        "importPath": "database",
+        "description": "database",
+        "peekOfCode": "DB_PATH = str(Path(__file__).parent.resolve() / DB_NAME)\ndef conectar() -> sqlite3.Connection:\n    \"\"\"Conecta ao banco no caminho DB_PATH.\"\"\"\n    logger.debug(\"Conectando ao DB em: %s\", DB_PATH)\n    return sqlite3.connect(DB_PATH)\ndef criar_tabela() -> None:\n    conn = conectar()\n    try:\n        with conn:\n            cursor = conn.cursor()",
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "executar",
+        "kind": 2,
+        "importPath": "git_publisher",
+        "description": "git_publisher",
+        "peekOfCode": "def executar(comando, pasta):\n    \"\"\"\n    Executa um comando Git e retorna a saída.\n    \"\"\"\n    resultado = subprocess.run(\n        comando,\n        cwd=pasta,\n        capture_output=True,\n        text=True,\n        encoding=\"utf-8\"  # Garante compatibilidade de caracteres em qualquer SO",
+        "detail": "git_publisher",
+        "documentation": {}
+    },
+    {
+        "label": "localizar_repositorio",
+        "kind": 2,
+        "importPath": "git_publisher",
+        "description": "git_publisher",
+        "peekOfCode": "def localizar_repositorio():\n    \"\"\"\n    Localiza automaticamente a pasta que contém o diretório .git.\n    \"\"\"\n    pasta = Path(__file__).resolve().parent\n    while pasta != pasta.parent:\n        if (pasta / \".git\").exists():\n            return pasta\n        pasta = pasta.parent\n    raise RuntimeError(\"Repositório Git não encontrado.\")",
+        "detail": "git_publisher",
+        "documentation": {}
+    },
+    {
+        "label": "publicar_git",
+        "kind": 2,
+        "importPath": "git_publisher",
+        "description": "git_publisher",
+        "peekOfCode": "def publicar_git():\n    \"\"\"\n    Publica automaticamente as alterações no GitHub.\n    \"\"\"\n    repo = localizar_repositorio()\n    logging.info(f\"Repositório encontrado em:\\n{repo}\")\n    # Verifica se o Git está disponível\n    executar([\"git\", \"--version\"], repo)\n    # Adiciona todos os arquivos\n    executar([\"git\", \"add\", \".\"], repo)",
+        "detail": "git_publisher",
+        "documentation": {}
+    },
+    {
+        "label": "gerar_html",
+        "kind": 2,
+        "importPath": "html_generator",
+        "description": "html_generator",
+        "peekOfCode": "def gerar_html(projeto, lista_pdfs, pasta_saida=\".\"):\n    \"\"\"\n    Gera o arquivo index.html contendo a lista de manuais do projeto.\n    \"\"\"\n    if not lista_pdfs:\n        raise Exception(\"Nenhum manual encontrado para gerar o HTML.\")\n    os.makedirs(pasta_saida, exist_ok=True)\n    # O GitHub Pages procura automaticamente por index.html\n    caminho_html = os.path.join(pasta_saida, \"index.html\")\n    # Ordena os PDFs pelo nome (índice 1 da tupla) de forma case-insensitive",
+        "detail": "html_generator",
+        "documentation": {}
+    },
+    {
+        "label": "gerar_qr",
+        "kind": 2,
+        "importPath": "qrcode_generator",
+        "description": "qrcode_generator",
+        "peekOfCode": "def gerar_qr(link: str, nome_saida: str = \"qrcode.png\", pasta: str = \"qrcodes\") -> str:\n    \"\"\"\n    Gera um QR Code apontando para um link (URL).\n    \"\"\"\n    if not link:\n        raise ValueError(\"Link inválido para geração do QR Code.\")\n    os.makedirs(pasta, exist_ok=True)\n    # Garante que o arquivo tenha a extensão .png\n    if not nome_saida.lower().endswith(\".png\"):\n        nome_saida += \".png\"",
+        "detail": "qrcode_generator",
+        "documentation": {}
+    }
+]
