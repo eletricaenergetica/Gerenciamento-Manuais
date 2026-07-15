@@ -72,8 +72,8 @@ def publicar_git():
     # Commit
     executar(["git", "commit", "-m", mensagem], repo)
 
-    # Push para a branch configurada (master ou main)
-    executar(["git", "push"], repo)
+   # Push forçando a branch main como padrão
+executar(["git", "push", "--set-upstream", "origin", "main"], repo)
 
     return "Publicação realizada com sucesso!"
 
