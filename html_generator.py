@@ -6,7 +6,7 @@ import urllib.parse
 def gerar_html(projeto, lista_pdfs, pasta_saida="."):
     """
     Gera o arquivo index.html contendo a lista de manuais do projeto,
-    agora com design moderno em Grid responsivo e barra de busca.
+    agora com design moderno em Grid responsivo, barra de busca e assinatura do autor.
     """
 
     if not lista_pdfs:
@@ -50,6 +50,15 @@ h1 {{
     color: #00BFFF;
     margin-bottom: 5px;
     font-size: 2.2rem;
+}}
+
+/* Estilo da Assinatura do Autor */
+.autor {{
+    font-size: 0.95rem;
+    color: #888; /* Cinza discreto para não brigar com o título principal */
+    margin-top: -5px;
+    margin-bottom: 15px;
+    font-style: italic;
 }}
 
 .subtitle {{
@@ -136,10 +145,10 @@ a:hover {{
 
 footer {{
     margin-top: 60px;
-    color: #666;
-    font-size: 13px;
+    color: #555;
+    font-size: 12px;
     border-top: 1px solid #222;
-    padding-top: 20px;
+    padding-top: 15px;
 }}
 </style>
 
@@ -150,6 +159,7 @@ footer {{
 <div class="container">
 
     <h1>📚 {html.escape(projeto)}</h1>
+    <div class="autor">Desenvolvido por Maurílio</div>
     <div class="subtitle" id="contador">{len(lista_pdfs)} Manual(is) disponível(is)</div>
 
     <div class="search-container">
