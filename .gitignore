@@ -1,0 +1,11 @@
+# Ignorar arquivos temporários do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignorar configurações do VS Code
+.vscode/
+
+# Ignorar banco de dados local (se não quiser subir o sqlite para o github)
+*.db

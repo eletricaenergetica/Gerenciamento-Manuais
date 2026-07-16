@@ -5,7 +5,8 @@ import urllib.parse
 
 def gerar_html(projeto, lista_pdfs, pasta_saida="."):
     """
-    Gera o arquivo index.html contendo a lista de manuais do projeto.
+    Gera o arquivo index.html contendo a lista de manuais do projeto,
+    agora com design moderno em Grid responsivo e barra de busca.
     """
 
     if not lista_pdfs:
@@ -29,62 +30,144 @@ def gerar_html(projeto, lista_pdfs, pasta_saida="."):
 <title>{html.escape(projeto)}</title>
 
 <style>
-
+/* Configurações Gerais */
 body {{
-    font-family: Arial, Helvetica, sans-serif;
-    background:#1e1e1e;
-    color:white;
-    margin:0;
-    padding:30px;
-    text-align:center;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    background: #121212;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}}
+
+.container {{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
 }}
 
 h1 {{
-    color:#00BFFF;
+    color: #00BFFF;
+    margin-bottom: 5px;
+    font-size: 2.2rem;
 }}
 
+.subtitle {{
+    color: #888;
+    margin-top: 5px;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+}}
+
+/* Barra de Busca */
+.search-container {{
+    margin-bottom: 30px;
+}}
+
+.search-input {{
+    width: 100%;
+    max-width: 500px;
+    padding: 12px 20px;
+    font-size: 16px;
+    background: #1e1e1e;
+    border: 2px solid #333;
+    border-radius: 30px;
+    color: white;
+    outline: none;
+    transition: all 0.3s ease;
+}}
+
+.search-input:focus {{
+    border-color: #00BFFF;
+    box-shadow: 0 0 10px rgba(0, 191, 255, 0.3);
+}}
+
+/* Grid de Cards */
+.grid-container {{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 10px 0;
+}}
+
+/* Card Modernizado */
 .card {{
-    width:340px;
-    margin:15px auto;
-    padding:18px;
-    background:#2d2d2d;
-    border-radius:12px;
-    box-shadow:0 0 8px rgba(0,0,0,.3);
+    background: #1e1e1e;
+    border: 1px solid #2d2d2d;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }}
 
+.card:hover {{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 191, 255, 0.15);
+    border-color: #3d3d3d;
+}}
+
+.card h3 {{
+    margin: 0 0 15px 0;
+    font-size: 1.1rem;
+    color: #ffffff;
+    word-break: break-word;
+    font-weight: 600;
+}}
+
+/* Botão do Card */
 a {{
-    display:block;
-    margin-top:15px;
-    padding:10px;
-    background:#0d6efd;
-    color:white;
-    text-decoration:none;
-    border-radius:8px;
+    display: block;
+    padding: 10px;
+    background: #0d6efd;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    transition: background 0.2s ease;
 }}
 
 a:hover {{
-    background:#0b5ed7;
+    background: #0b5ed7;
 }}
 
 footer {{
-    margin-top:40px;
-    color:#999;
-    font-size:13px;
+    margin-top: 60px;
+    color: #666;
+    font-size: 13px;
+    border-top: 1px solid #222;
+    padding-top: 20px;
 }}
-
 </style>
 
 </head>
 
 <body>
 
-<h1>📚 {html.escape(projeto)}</h1>
+<div class="container">
 
-<h3>{len(lista_pdfs)} Manual(is) disponível(is)</h3>
+    <h1>📚 {html.escape(projeto)}</h1>
+    <div class="subtitle" id="contador">{len(lista_pdfs)} Manual(is) disponível(is)</div>
+
+    <div class="search-container">
+        <input type="text" id="busca" class="search-input" placeholder="Pesquise por um manual...">
+    </div>
+
+    <div class="grid-container" id="lista-manuais">
 """
 
     for pdf in lista_pdfs:
-        nome = html.escape(pdf[1])
+        nome_completo = html.escape(pdf[1])
+        
+        # Remove visualmente a extensão ".pdf" para o título ficar mais limpo
+        if nome_completo.lower().endswith(".pdf"):
+            nome_exibicao = nome_completo[:-4]
+        else:
+            nome_exibicao = nome_completo
+            
         arquivo_pdf = os.path.basename(pdf[2])
 
         # Sanitiza o link para evitar problemas com espaços ou acentos na URL
@@ -93,23 +176,47 @@ footer {{
         link_pdf = f"pdfs/{projeto_url}/{arquivo_url}"
 
         html_content += f"""
-<div class="card">
-
-<h3>{nome}</h3>
-
-<a href="{link_pdf}" target="_blank">
-📖 Abrir Manual
-</a>
-
-</div>
-"""
+        <div class="card" data-nome="{nome_completo.lower()}">
+            <h3>{nome_exibicao}</h3>
+            <a href="{link_pdf}" target="_blank">
+                📖 Abrir Manual
+            </a>
+        </div>"""
 
     html_content += """
-<footer>
+    </div>
 
-Gerado automaticamente pelo Sistema de Gerenciamento de Manuais.
+    <footer>
+        Gerado automaticamente pelo Sistema de Gerenciamento de Manuais.
+    </footer>
 
-</footer>
+</div>
+
+<script>
+document.getElementById('busca').addEventListener('input', function(e) {
+    const termo = e.target.value.toLowerCase().trim();
+    const cards = document.querySelectorAll('.card');
+    let visiveis = 0;
+
+    cards.forEach(card => {
+        const nomeManual = card.getAttribute('data-nome');
+        if (nomeManual.includes(termo)) {
+            card.style.display = '';
+            visiveis++;
+        } else {
+            card.style.display = 'none';
+        }
+    });
+
+    // Atualiza o contador de manuais dinamicamente
+    const contador = document.getElementById('contador');
+    if (termo === '') {
+        contador.textContent = cards.length + " Manual(is) disponível(is)";
+    } else {
+        contador.textContent = visiveis + " de " + cards.length + " encontrado(s)";
+    }
+});
+</script>
 
 </body>
 </html>
