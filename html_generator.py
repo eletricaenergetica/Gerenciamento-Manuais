@@ -159,7 +159,7 @@ footer {{
 <div class="container">
 
     <h1>📚 {html.escape(projeto)}</h1>
-    <div class="autor">Desenvolvido por Maurílio</div>
+    <div class="autor">Desenvolvido por Maurílio Marques de Melo</div>
     <div class="subtitle" id="contador">{len(lista_pdfs)} Manual(is) disponível(is)</div>
 
     <div class="search-container">
